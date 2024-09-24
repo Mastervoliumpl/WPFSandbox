@@ -19,7 +19,7 @@ namespace WPFSandbox
     /// </summary>
     public partial class Options : Window
     {
-        public Options()
+        public Options(bool boolean, int integer)
         {
             InitializeComponent();
         }
