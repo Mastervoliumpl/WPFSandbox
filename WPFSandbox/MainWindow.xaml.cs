@@ -17,16 +17,18 @@ namespace WPFSandbox
     public partial class MainWindow : Window
     {
         //public List<string> lstNames { get; set; } = new List<string>();
+        private Options options;
         public MainWindow()
         {
             InitializeComponent();
+            options = new(true, 6);
         }
 
         private void ClearList() => lstNames.Items.Clear();
 
         private void ButtonAddName_Click(object sender, RoutedEventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtName.Text) && !lstNames.Items.Contains(txtName.Text) && lstNames.Items.Count < 6)
+            if (!string.IsNullOrWhiteSpace(txtName.Text) && !lstNames.Items.Contains(txtName.Text) && lstNames.Items.Count < options.NumberOfNamesAllowed)
             {
                 lstNames.Items.Add(txtName.Text);
                 txtName.Clear();
@@ -44,12 +46,14 @@ namespace WPFSandbox
 
         private void lstNames_MouseUp(object sender, MouseButtonEventArgs e)
         {
-            ClearList();
+            if (options.ClearByClick)
+            {
+                ClearList();
+            }           
         }
 
         private void ButtonOptions_Click(object sender, RoutedEventArgs e)
         {
-            Options options = new Options();
             options.Show();
         }
     }

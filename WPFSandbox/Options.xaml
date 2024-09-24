@@ -8,11 +8,29 @@
         Title="Options" Height="300" Width="250"
         ResizeMode="NoResize">
     <Grid Margin="10">
-        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5,0,0,0">
-            <Label HorizontalContentAlignment="Center">Names Options</Label>
-            <Button x:Name="btnOption1" Margin="0,5,0,0">Add Name</Button>
-            <Button x:Name="btnOption2" Margin="0,5,0,0">Clear Names</Button>
-            <Button x:Name="btnOption3" Margin="0,5,0,0">Options</Button>
-        </StackPanel>
+        <Grid.Resources>
+            <Style TargetType="Label">
+                <Setter Property="Foreground" Value="Black"/>
+                <Setter Property="FontFamily" Value="Arial"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="FontWeight" Value="DemiBold"/>
+            </Style>
+        </Grid.Resources>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <ToggleButton x:Name="btnOption1" Grid.Row="1" Grid.ColumnSpan="3" Checked="chkClearByClick_Checked" Unchecked="chkClearByClick_Unchecked">Clear list on click</ToggleButton>
+
+        <Label HorizontalContentAlignment="Center" Grid.Row="2" Grid.ColumnSpan="3">Names on list before it clears</Label>
+        <TextBox x:Name="txtAmountOfNames" Grid.Row="3" Grid.ColumnSpan="3" TextChanged="txtAmountOfNames_TextChanged"/>
     </Grid>
 </Window>
